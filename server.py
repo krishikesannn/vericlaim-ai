@@ -33,7 +33,7 @@ from vericlaim.evidence_matching import build_evidence_dna, find_historical_matc
 
 STATIC_DIR = ROOT / "app" / "static"
 ASSET_DIR = ROOT / "assets"
-STATE_DIR = ROOT / "data"
+STATE_DIR = Path(os.environ.get("VERICLAIM_STATE_DIR", ROOT / "data"))
 STATE_DB = STATE_DIR / "vericlaim_state.sqlite3"
 EVIDENCE_DIR = STATE_DIR / "claim_evidence"
 MODEL_PATH = Path(os.environ.get("VERICLAIM_MODEL", ROOT / "models" / "efficientnet_hybrid" / "vericlaim_model.joblib"))
@@ -1064,7 +1064,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 def main() -> None:
     host = os.environ.get("VERICLAIM_HOST", "127.0.0.1")
-    port = int(os.environ.get("VERICLAIM_PORT", "8080"))
+    port = int(os.environ.get("PORT", os.environ.get("VERICLAIM_PORT", "8080")))
     print(f"VeriClaim AI ready at http://{host}:{port}")
     ThreadingHTTPServer((host, port), Handler).serve_forever()
 
