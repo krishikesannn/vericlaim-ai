@@ -1,0 +1,55 @@
+# Python environments and generated caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.torch/
+
+# Local operating-system and IDE files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local runtime state and submitted customer evidence
+data/*
+!data/README.md
+*.sqlite
+*.sqlite3
+*.db
+server.stdout.log
+server.stderr.log
+*.log
+
+# Scratch builds and generated inspection metadata
+tmp/
+*.inspect.ndjson
+*.layout.json
+
+# Training checkpoints and superseded model binaries. The two runtime model
+# directories below remain versioned so a fresh clone can run the demo.
+models/**/*.pt
+models/**/*.pth
+models/**/*.keras
+models/**/*.joblib
+!models/efficientnet_hybrid/*.keras
+!models/efficientnet_hybrid/*.joblib
+!models/neural_candidate/*.joblib
+
+# Generated deliverables: retain only the reproducible notebook, comparison
+# metrics, and final presentation used for the hackathon handoff.
+output/*
+!output/README.md
+!output/external_models_evaluation.json
+!output/VeriClaim_AI_Analytics_Submission_Notebook.ipynb
+!output/VeriClaim_AI_10_Slide_Template_Followed_Deck.pptx
+
+# Older/duplicate presentation exports and extracted render folders
+VeriClaim_AI_Cinematic_Judge_Deck_2026/
+VeriClaim_AI_Judge_Presentation_2026/
+VeriClaim_AI_Cinematic_Judge_Deck_2026.pptx
+VeriClaim_AI_Judge_Presentation_2026.pptx

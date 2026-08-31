@@ -1,0 +1,8 @@
+name: vericlaim-ai
+metadata:
+  template: vericlaim-container-app@1.0.0
+services:
+  api:
+    project: .
+    language: python
+    host: containerapp

@@ -1,0 +1,4 @@
+-r requirements.txt
+tensorflow==2.20.0
+torch==2.13.0+cu126
+torchvision==0.28.0+cu126

@@ -1,0 +1,95 @@
+digraph VeriClaim {
+  graph [rankdir=TB, bgcolor="#071d31", pad="0.35", nodesep="0.28", ranksep="0.55", fontname="Arial", splines=ortho];
+  node [shape=box, style="rounded,filled", fontname="Arial", fontsize=12, color="#75d7c2", fillcolor="#f4fbf8", fontcolor="#102d3c", margin="0.16,0.11"];
+  edge [color="#83dbc6", penwidth=1.6, arrowsize=0.75];
+  title [shape=plain, fontcolor="white", fontsize=20, label="VERICLAIM AI — COMPLETE END-TO-END COMPONENT ARCHITECTURE\nHuman-led vehicle-claim fraud triage, secure evidence intelligence and governed staff review"];
+
+  subgraph cluster_customer {
+    label="1. CLAIMANT EXPERIENCE"; color="#1c7f73"; fontcolor="#8ce6d0"; fontsize=14; style="rounded";
+    login [label="Customer Portal\nSignup / Login"]; dashboard [label="Policy Dashboard\nPolicies · history · notifications"];
+    claim [label="Claim Filing Wizard\nIncident · location · amount · description"];
+    upload [label="Evidence Upload\nImages · PDFs · video"];
+    passport [label="Secure Claim Passport\nRepeat claim · token · expiry"];
+    customer_services [label="Customer Services\nTracking · messages · receipt"];
+    login -> dashboard -> claim -> upload; claim -> passport; dashboard -> customer_services;
+  }
+
+  subgraph cluster_backend {
+    label="2. SECURE APPLICATION BACKEND — server.py"; color="#1c7f73"; fontcolor="#8ce6d0"; fontsize=14; style="rounded";
+    api [label="HTTP Application Server\nFrontend + API routing", fillcolor="#e8f8f2"];
+    auth [label="Authentication & Authorization\nCustomer / staff roles · sessions"];
+    token [label="Passport Service\nIssue · rotate · expire · replay block"];
+    workflow [label="Claim Workflow Service\nSubmit → review → decision → settlement"];
+    vault [label="Evidence Storage Service\nProtected originals + staff-only routes"];
+    sqlite [label="SQLite Persistent State\nUsers · claims · tokens · messages"];
+    audit [label="Audit & Report Service\nEvidence receipt · staff PDF report"];
+    api -> auth; api -> token; api -> workflow; workflow -> vault; workflow -> sqlite; workflow -> audit;
+  }
+
+  subgraph cluster_forensics {
+    label="3. EVIDENCE VALIDATION & FORENSICS"; color="#c8934f"; fontcolor="#ffd69a"; fontsize=14; style="rounded";
+    filecheck [label="File Validation\nType · size · decoding", fillcolor="#fff7e8", color="#efb66c"];
+    quality [label="Quality Assessment\nResolution · focus · brightness · edges", fillcolor="#fff7e8", color="#efb66c"];
+    tamper [label="Integrity Signals\nEditing / tamper indicators", fillcolor="#fff7e8", color="#efb66c"];
+    sha [label="SHA-256 Fingerprint\nExact-file identity", fillcolor="#fff7e8", color="#efb66c"];
+    phash [label="Perceptual + Difference Hash\nVisual identity", fillcolor="#fff7e8", color="#efb66c"];
+    filecheck -> quality; filecheck -> tamper; filecheck -> sha; filecheck -> phash;
+  }
+
+  subgraph cluster_ai {
+    label="4. HYBRID AI FRAUD-DETECTION ENGINE"; color="#1c7f73"; fontcolor="#8ce6d0"; fontsize=14; style="rounded";
+    cnn [label="EfficientNetV2B0 CNN\nImageNet transfer learning", fillcolor="#e8f8f2"];
+    embed [label="CNN Embedding + Visual Score", fillcolor="#e8f8f2"];
+    features [label="Handcrafted Image Features\nColour · texture · edges · quality", fillcolor="#e8f8f2"];
+    trees [label="Extra Trees\nFull-data + rotating balanced learners", fillcolor="#e8f8f2"];
+    mlp [label="MLP Neural Network\n794 → Dense 128 → Dense 32 → score", fillcolor="#e8f8f2"];
+    archive [label="Archive Similarity\nFraud / legitimate reference similarity", fillcolor="#e8f8f2"];
+    stack [label="Stacked Meta-Model\nClass-weighted Logistic Regression", fillcolor="#e8f8f2"];
+    calibrate [label="Platt Calibration\nCalibrated fraud probability", fillcolor="#e8f8f2"];
+    threshold [label="Threshold Policy\nBroad · balanced · high-confidence", fillcolor="#e8f8f2"];
+    output [label="Final Output\nFraud / Not Fraud · risk score · tier", fillcolor="#d9f3e7", penwidth=2];
+    cnn -> embed -> stack; features -> trees -> stack; features -> mlp -> stack; archive -> stack; stack -> calibrate -> threshold -> output;
+  }
+
+  subgraph cluster_dna {
+    label="5. TRANSFORMATION-RESISTANT EVIDENCE DNA"; color="#c8934f"; fontcolor="#ffd69a"; fontsize=14; style="rounded";
+    exact [label="Exact Match\nSHA-256 comparison", fillcolor="#fff7e8", color="#efb66c"];
+    near [label="Near-Duplicate Match\nPerceptual / difference hashes", fillcolor="#fff7e8", color="#efb66c"];
+    partial [label="Partial-Reuse Match\nMulti-scale overlapping patches", fillcolor="#fff7e8", color="#efb66c"];
+    descriptors [label="Visual Descriptors\nColour distribution + edge orientation", fillcolor="#fff7e8", color="#efb66c"];
+    similarity [label="Similarity Decision\nHamming + cosine distance", fillcolor="#fff7e8", color="#efb66c"];
+    dna_alert [label="Human Verification Alert\nCrop · flip · rotate · resize · compress", fillcolor="#ffe8c4", color="#efb66c"];
+    exact -> similarity; near -> similarity; partial -> similarity; descriptors -> similarity; similarity -> dna_alert;
+  }
+
+  subgraph cluster_governance {
+    label="6. EXPLAINABILITY, STAFF REVIEW & GOVERNANCE"; color="#1c7f73"; fontcolor="#8ce6d0"; fontsize=14; style="rounded";
+    gradcam [label="CNN Attention / Grad-CAM Style\nVisual regions influencing CNN", fillcolor="#e8f8f2"];
+    dna_passport [label="Evidence DNA Passport\nCoverage · diversity · quality · integrity", fillcolor="#e8f8f2"];
+    lab [label="Model Lab\nCurrent hybrid vs previous MLP", fillcolor="#e8f8f2"];
+    validation [label="Leakage-Aware Validation\nPerceptual clusters + grouped folds", fillcolor="#e8f8f2"];
+    staff_queue [label="Staff Fraud Review Queue\nLow / medium / high priority", fillcolor="#e8f8f2"];
+    viewer [label="Evidence Investigation Viewer\nOriginals · PDF · video · hashes · image scores", fillcolor="#e8f8f2"];
+    decision [label="Human Decision Workflow\nVerify → request evidence → approve / reject / settle", fillcolor="#d9f3e7", penwidth=2];
+    feedback [label="Reviewer Feedback Loop\nConfirmed fraud · legitimate · inconclusive", fillcolor="#e8f8f2"];
+    gradcam -> viewer; dna_passport -> viewer; lab -> validation; staff_queue -> viewer -> decision -> feedback;
+  }
+
+  subgraph cluster_mlops {
+    label="7. OFFLINE AI / ANALYTICS & MLOPS"; color="#376e98"; fontcolor="#a6d7ff"; fontsize=14; style="rounded";
+    dataset [label="Supplied Training Dataset\nFraud + Non-Fraud images", fillcolor="#e8f4fc", color="#76bde8"];
+    preprocess [label="Preprocessing & Feature Extraction", fillcolor="#e8f4fc", color="#76bde8"];
+    imbalance [label="Imbalance Strategy\nFraud weighting + rotating balancing", fillcolor="#e8f4fc", color="#76bde8"];
+    eval [label="Evaluation\nPR-AUC · recall · precision · F1 · Brier", fillcolor="#e8f4fc", color="#76bde8"];
+    artifacts [label="Saved Artifacts\nJoblib ensemble · CNN backbone · metrics", fillcolor="#e8f4fc", color="#76bde8"];
+    deploy [label="Runtime / Deployment\nLocal · Docker · Azure-ready", fillcolor="#e8f4fc", color="#76bde8"];
+    dataset -> preprocess -> imbalance -> eval -> artifacts -> deploy;
+  }
+
+  title -> login [style=invis];
+  upload -> api; passport -> token; vault -> filecheck;
+  quality -> features; tamper -> features; phash -> archive; filecheck -> cnn; sha -> exact; phash -> near; phash -> partial; quality -> descriptors;
+  output -> staff_queue; dna_alert -> staff_queue; output -> dna_passport; cnn -> gradcam; output -> lab;
+  dataset -> preprocess [style=invis]; artifacts -> cnn [style=dashed, color="#76bde8"]; artifacts -> trees [style=dashed, color="#76bde8"]; artifacts -> mlp [style=dashed, color="#76bde8"]; artifacts -> stack [style=dashed, color="#76bde8"];
+  validation -> eval [style=dashed, color="#76bde8"]; feedback -> eval [style=dashed, color="#76bde8"];
+}

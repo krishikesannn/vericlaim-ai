@@ -1,0 +1,111 @@
+{
+  "project": "VeriClaim AI",
+  "feature_version": "vericlaim-vision-v1",
+  "dataset": {
+    "source": "https://www.kaggle.com/datasets/pacificrm/car-insurance-fraud-detection",
+    "train_images": 5200,
+    "train_fraud": 200,
+    "test_images": 1416,
+    "test_fraud": 93,
+    "train_fraud_rate": 0.0385,
+    "test_fraud_rate": 0.0657
+  },
+  "model": "Cross-fitted stacked ExtraTrees ensemble with rotating balanced subsets and label-aware archive similarity",
+  "evaluation_note": "The operating threshold was selected from leakage-aware out-of-fold predictions only. The supplied Kaggle test split remained untouched until final evaluation but contains perceptual overlap with training.",
+  "validation_protocol": {
+    "method": "StratifiedGroupKFold out-of-fold stacking using perceptual-image clusters",
+    "folds": 5,
+    "perceptual_hash_distance": 6,
+    "out_of_fold_images": 5200,
+    "out_of_fold_fraud": 200,
+    "recall_target": 0.99,
+    "train_perceptual_groups": 3692
+  },
+  "imbalance_strategy": {
+    "kept_all_training_images": true,
+    "full_model_class_weight": "balanced_subsample",
+    "rotating_balanced_models": 20,
+    "nonfraud_per_fraud_in_each_balanced_learner": 8.0,
+    "sampling": "Every fraud image is used in each balanced learner; all non-fraud images rotate across learners. No permanent undersampling or synthetic rows."
+  },
+  "validation_metrics": {
+    "threshold": 0.1688,
+    "accuracy": 0.0633,
+    "balanced_accuracy": 0.5081,
+    "precision": 0.0391,
+    "recall": 0.99,
+    "f1": 0.0752,
+    "f2": 0.1687,
+    "roc_auc": 0.7668,
+    "pr_auc": 0.1751,
+    "brier": 0.1864,
+    "confusion_matrix": {
+      "tn": 131,
+      "fp": 4869,
+      "fn": 2,
+      "tp": 198
+    }
+  },
+  "test_metrics": {
+    "threshold": 0.1688,
+    "accuracy": 0.4626,
+    "balanced_accuracy": 0.7124,
+    "precision": 0.1089,
+    "recall": 1.0,
+    "f1": 0.1964,
+    "f2": 0.3793,
+    "roc_auc": 0.9183,
+    "pr_auc": 0.6448,
+    "brier": 0.1043,
+    "confusion_matrix": {
+      "tn": 562,
+      "fp": 761,
+      "fn": 0,
+      "tp": 93
+    }
+  },
+  "classification_metrics": {
+    "threshold": 0.413,
+    "accuracy": 0.8213,
+    "balanced_accuracy": 0.8194,
+    "precision": 0.2436,
+    "recall": 0.8172,
+    "f1": 0.3753,
+    "f2": 0.5556,
+    "roc_auc": 0.9183,
+    "pr_auc": 0.6448,
+    "brier": 0.1043,
+    "confusion_matrix": {
+      "tn": 1087,
+      "fp": 236,
+      "fn": 17,
+      "tp": 76
+    }
+  },
+  "default_thresholds": {
+    "review": 0.1688,
+    "classification": 0.413,
+    "investigate": 0.9825
+  },
+  "leakage_audit": {
+    "exact_train_test_duplicates": 0,
+    "test_images": 1416,
+    "overlap_rate": 0.0,
+    "perceptual_screen": {
+      "hash": "pHash-63",
+      "distance_threshold": 6,
+      "test_images_with_close_train_match": 761,
+      "test_images_with_identical_perceptual_hash": 261,
+      "close_match_rate": 0.53743,
+      "cross_label_close_matches": 0,
+      "nearest_distance_histogram": {
+        "0": 261,
+        "2": 343,
+        "4": 124,
+        "6": 33
+      },
+      "warning": "Perceptual matches are a screening signal and require visual or geometric confirmation."
+    }
+  },
+  "elapsed_seconds": 28.0
+}

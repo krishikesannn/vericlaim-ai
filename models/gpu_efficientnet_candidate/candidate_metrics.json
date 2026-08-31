@@ -1,0 +1,99 @@
+{
+  "project": "VeriClaim AI",
+  "candidate": true,
+  "model": "CUDA fine-tuned EfficientNetV2-S + class-balanced focal loss",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "dataset_policy": "Supplied claim images only; no external claim images or synthetic claim data.",
+  "training": {
+    "augmentation": [
+      "horizontal flip",
+      "small rotation",
+      "colour jitter",
+      "small translation"
+    ],
+    "loss": "class-balanced focal",
+    "beta": 0.9999,
+    "gamma": 2.0,
+    "fine_tune_blocks": 2,
+    "folds": 5
+  },
+  "validation": {
+    "method": "StratifiedGroupKFold on perceptual image clusters",
+    "groups": 3692
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "model": "fold_1.pt",
+      "validation_pr_auc": 0.6992,
+      "fit_images": 4160,
+      "validation_images": 1040
+    },
+    {
+      "fold": 2,
+      "model": "fold_2.pt",
+      "validation_pr_auc": 0.5474,
+      "fit_images": 4160,
+      "validation_images": 1040
+    },
+    {
+      "fold": 3,
+      "model": "fold_3.pt",
+      "validation_pr_auc": 0.6057,
+      "fit_images": 4160,
+      "validation_images": 1040
+    },
+    {
+      "fold": 4,
+      "model": "fold_4.pt",
+      "validation_pr_auc": 0.7384,
+      "fit_images": 4160,
+      "validation_images": 1040
+    },
+    {
+      "fold": 5,
+      "model": "fold_5.pt",
+      "validation_pr_auc": 0.6708,
+      "fit_images": 4160,
+      "validation_images": 1040
+    }
+  ],
+  "classification_threshold": 0.06548271065178837,
+  "oof_metrics": {
+    "threshold": 0.0655,
+    "accuracy": 0.93,
+    "balanced_accuracy": 0.8436,
+    "precision": 0.3233,
+    "recall": 0.75,
+    "f1": 0.4518,
+    "f2": 0.5934,
+    "roc_auc": 0.9329,
+    "pr_auc": 0.6447,
+    "brier": 0.0212,
+    "confusion_matrix": {
+      "tn": 4686,
+      "fp": 314,
+      "fn": 50,
+      "tp": 150
+    }
+  },
+  "test_metrics": {
+    "threshold": 0.0655,
+    "accuracy": 0.9428,
+    "balanced_accuracy": 0.8944,
+    "precision": 0.5417,
+    "recall": 0.8387,
+    "f1": 0.6582,
+    "f2": 0.7558,
+    "roc_auc": 0.9742,
+    "pr_auc": 0.8264,
+    "brier": 0.0271,
+    "confusion_matrix": {
+      "tn": 1257,
+      "fp": 66,
+      "fn": 15,
+      "tp": 78
+    }
+  },
+  "elapsed_seconds": 5716.9
+}

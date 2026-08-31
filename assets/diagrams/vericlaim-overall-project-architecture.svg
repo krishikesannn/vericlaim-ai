@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071d31"/><stop offset="1" stop-color="#0d4050"/></linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d6548"/><stop offset="1" stop-color="#24a38a"/></linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity=".25"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="#83dbc6"/></marker>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#fff}.sub{font:400 16px Arial,sans-serif;fill:#b9d5d5}.lane{font:700 14px Arial,sans-serif;letter-spacing:2px;fill:#8ce6d0}.box{fill:#fff;stroke:#d8e5e5;stroke-width:1.5}.mint{fill:#eaf9f4;stroke:#83dbc6;stroke-width:1.5}.navy{fill:#0b3042;stroke:#2e7680;stroke-width:1.5}.accent{fill:#fff5e7;stroke:#efb66c;stroke-width:1.5}.boxt{font:700 17px Arial,sans-serif;fill:#102d3c}.body{font:400 13px Arial,sans-serif;fill:#48616a}.small{font:400 12px Arial,sans-serif;fill:#48616a}.darkt{font:700 16px Arial,sans-serif;fill:#fff}.darkb{font:400 12px Arial,sans-serif;fill:#c8e7e2}.tag{font:700 11px Arial,sans-serif;letter-spacing:1px;fill:#0d6548}.arrow{stroke:#83dbc6;stroke-width:3;fill:none;marker-end:url(#arrow)}.dash{stroke:#f3c278;stroke-width:2.5;stroke-dasharray:7 7;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <circle cx="1810" cy="100" r="260" fill="#39c7ab" opacity=".08"/><circle cx="80" cy="1020" r="260" fill="#48b5d1" opacity=".08"/>
+  <text x="70" y="66" class="title">VeriClaim AI — End-to-End Fraud Triage &amp; Evidence Intelligence Architecture</text>
+  <text x="70" y="96" class="sub">A human-led car-insurance claim workflow: secure evidence intake → hybrid AI triage → investigator evidence review → auditable decision.</text>
+
+  <!-- lane headings -->
+  <text x="70" y="145" class="lane">01 · CLAIMANT EXPERIENCE</text><text x="478" y="145" class="lane">02 · SECURE APPLICATION BACKEND</text><text x="1040" y="145" class="lane">03 · AI &amp; EVIDENCE INTELLIGENCE</text><text x="1570" y="145" class="lane">04 · HUMAN GOVERNANCE</text>
+
+  <!-- Customer -->
+  <g filter="url(#shadow)"><rect x="70" y="170" width="330" height="190" rx="18" class="box"/><rect x="70" y="170" width="330" height="45" rx="18" fill="url(#hero)"/><text x="95" y="199" class="darkt">Customer Portal</text>
+  <text x="95" y="244" class="boxt">Claim initiation &amp; secure upload</text><text x="95" y="272" class="body">• Incident details, policy and amount</text><text x="95" y="294" class="body">• JPG / PNG / WEBP damage photos</text><text x="95" y="316" class="body">• PDF documents and MP4 / WEBM video</text><text x="95" y="342" class="tag">REPEAT CLAIM → ONE-TIME PASSPORT TOKEN</text></g>
+  <g filter="url(#shadow)"><rect x="70" y="410" width="330" height="170" rx="18" class="navy"/><text x="95" y="445" class="darkt">Customer safeguards</text><text x="95" y="476" class="darkb">Authenticated local session</text><text x="95" y="500" class="darkb">Autosaved draft &amp; claim receipt</text><text x="95" y="524" class="darkb">Status tracker &amp; secure messages</text><text x="95" y="548" class="darkb">No automatic claim denial</text></g>
+
+  <!-- Backend -->
+  <g filter="url(#shadow)"><rect x="470" y="170" width="500" height="410" rx="18" class="box"/><text x="498" y="207" class="boxt">Python Application Server · server.py</text><text x="498" y="233" class="body">Role-based API layer and workflow orchestrator</text>
+  <rect x="498" y="260" width="205" height="116" rx="12" class="mint"/><text x="517" y="289" class="boxt">Identity &amp; access</text><text x="517" y="315" class="small">• Customer / staff roles</text><text x="517" y="337" class="small">• HttpOnly sessions</text><text x="517" y="359" class="small">• Password hashing</text>
+  <rect x="730" y="260" width="210" height="116" rx="12" class="mint"/><text x="748" y="289" class="boxt">Claim Passport</text><text x="748" y="315" class="small">• Account + policy bound</text><text x="748" y="337" class="small">• 10-minute expiry</text><text x="748" y="359" class="small">• Token rotation / replay block</text>
+  <rect x="498" y="404" width="205" height="142" rx="12" class="mint"/><text x="517" y="433" class="boxt">Claim workflow API</text><text x="517" y="459" class="small">Submit → Under Review</text><text x="517" y="481" class="small">Approve / Reject / Settle</text><text x="517" y="503" class="small">Staff feedback &amp; messaging</text><text x="517" y="525" class="small">PDF evidence report</text>
+  <rect x="730" y="404" width="210" height="142" rx="12" class="mint"/><text x="748" y="433" class="boxt">Durable local state</text><text x="748" y="459" class="small">SQLite claim / token history</text><text x="748" y="481" class="small">Claim evidence file vault</text><text x="748" y="503" class="small">SHA-256 audit records</text><text x="748" y="525" class="small">Staff-only media routes</text></g>
+
+  <!-- AI -->
+  <g filter="url(#shadow)"><rect x="1040" y="170" width="470" height="410" rx="18" class="box"/><text x="1068" y="207" class="boxt">Hybrid Image Fraud-Risk Engine</text><text x="1068" y="233" class="body">Supplied dataset only · group-aware validation · calibrated output</text>
+  <rect x="1068" y="260" width="194" height="106" rx="12" class="mint"/><text x="1086" y="289" class="boxt">Image validation</text><text x="1086" y="315" class="small">Decode, dimensions, quality</text><text x="1086" y="337" class="small">Integrity / tamper signals</text>
+  <rect x="1288" y="260" width="194" height="106" rx="12" class="mint"/><text x="1306" y="289" class="boxt">EfficientNetV2B0 CNN</text><text x="1306" y="315" class="small">ImageNet transfer learning</text><text x="1306" y="337" class="small">Embedding + visual score</text>
+  <rect x="1068" y="395" width="194" height="151" rx="12" class="mint"/><text x="1086" y="424" class="boxt">Feature ML ensemble</text><text x="1086" y="450" class="small">Handcrafted colour / edge /</text><text x="1086" y="468" class="small">texture / quality features</text><text x="1086" y="490" class="small">Extra Trees + MLP</text><text x="1086" y="512" class="small">Rotating balanced learners</text>
+  <rect x="1288" y="395" width="194" height="151" rx="12" class="mint"/><text x="1306" y="424" class="boxt">Fusion &amp; calibration</text><text x="1306" y="450" class="small">Stacked logistic meta-model</text><text x="1306" y="472" class="small">Platt probability calibration</text><text x="1306" y="494" class="small">Balanced classification threshold</text><text x="1306" y="516" class="small">Broad / balanced / strict bands</text></g>
+
+  <!-- Evidence DNA -->
+  <g filter="url(#shadow)"><rect x="1040" y="630" width="470" height="226" rx="18" class="accent"/><text x="1068" y="667" class="boxt">Transformation-Resistant Evidence DNA</text><text x="1068" y="693" class="body">A separate investigator signal — a match is not proof of fraud.</text>
+  <text x="1068" y="728" class="small">SHA-256 exact-file hash  •  perceptual &amp; difference hashes</text><text x="1068" y="751" class="small">Multi-scale overlapping patches  •  colour &amp; edge descriptors</text><text x="1068" y="774" class="small">Hamming / cosine similarity across previous claim evidence</text><text x="1068" y="808" class="tag">DETECTS CROPPED · ROTATED · FLIPPED · RESIZED · COMPRESSED REUSE</text></g>
+
+  <!-- Staff -->
+  <g filter="url(#shadow)"><rect x="1560" y="170" width="290" height="686" rx="18" class="box"/><rect x="1560" y="170" width="290" height="45" rx="18" fill="#0b3042"/><text x="1585" y="199" class="darkt">Staff Operations Portal</text>
+  <text x="1585" y="246" class="boxt">AI-assisted review queue</text><text x="1585" y="273" class="body">Low / medium / high risk tier</text><text x="1585" y="295" class="body">Investigation priority, never verdict</text>
+  <line x1="1585" y1="320" x2="1825" y2="320" stroke="#d7e3e3"/>
+  <text x="1585" y="351" class="boxt">Evidence Investigation Viewer</text><text x="1585" y="377" class="small">• Original photos, PDF and video</text><text x="1585" y="399" class="small">• Image-level probability / quality</text><text x="1585" y="421" class="small">• SHA-256 &amp; perceptual hashes</text><text x="1585" y="443" class="small">• Evidence DNA match detail</text><text x="1585" y="465" class="small">• On-demand CNN attention map</text>
+  <line x1="1585" y1="492" x2="1825" y2="492" stroke="#d7e3e3"/>
+  <text x="1585" y="523" class="boxt">Human decision &amp; audit</text><text x="1585" y="549" class="small">Verify documents and linkage</text><text x="1585" y="571" class="small">Record confirmed fraud / legitimate</text><text x="1585" y="593" class="small">Status + communication log</text><text x="1585" y="615" class="small">Download evidence report</text>
+  <rect x="1585" y="663" width="240" height="140" rx="12" fill="#e7f7ec"/><text x="1603" y="694" class="tag">GOVERNANCE GUARDRAIL</text><text x="1603" y="725" class="boxt">Human-led decision</text><text x="1603" y="752" class="small">AI prioritizes evidence.</text><text x="1603" y="774" class="small">Authorized staff decide.</text></g>
+
+  <!-- Deployment -->
+  <g filter="url(#shadow)"><rect x="70" y="900" width="1780" height="118" rx="18" class="navy"/><text x="98" y="937" class="darkt">Deployment, QA &amp; Model Governance Layer</text><text x="98" y="967" class="darkb">Docker / Azure-ready configuration  •  health endpoint  •  persistent SQLite state  •  versioned model artifacts  •  grouped-fold validation  •  leakage audit  •  calibration / threshold monitoring  •  reviewer feedback captured for future evaluation</text><text x="98" y="994" class="darkb">Production hardening path: HTTPS, managed identity, encrypted object storage, managed database, centralized audit logging, alerting and external claim-level validation.</text></g>
+
+  <!-- arrows -->
+  <path d="M400 265 H465" class="arrow"/><path d="M970 305 H1035" class="arrow"/><path d="M1510 375 H1555" class="arrow"/><path d="M1260 580 V625" class="arrow"/><path d="M1510 742 H1555" class="dash"/><path d="M400 505 H465" class="arrow"/><path d="M720 580 V895" class="arrow"/><path d="M1280 856 V895" class="arrow"/><path d="M1705 856 V895" class="arrow"/>
+  <text x="75" y="1052" class="sub">VeriClaim AI is decision-support software: visual risk, evidence authenticity and archive similarity are kept distinct so investigators can verify the claim before any outcome is recorded.</text>
+</svg>
