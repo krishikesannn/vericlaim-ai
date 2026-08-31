@@ -39,6 +39,7 @@ models/**/*.joblib
 !models/efficientnet_hybrid/*.keras
 !models/efficientnet_hybrid/*.joblib
 !models/neural_candidate/*.joblib
+!models/vericlaim_model.joblib
 
 # Generated deliverables: retain only the reproducible notebook, comparison
 # metrics, and final presentation used for the hackathon handoff.
