@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/vericlaim-cover.png" alt="VeriClaim AI — Evidence intelligence for vehicle-insurance claim triage" width="100%">
+  <img src="assets/vericlaim-cover-v2.png" alt="VeriClaim AI — Evidence intelligence for vehicle-insurance claim triage" width="100%">
 </p>
 
 <p align="center">
