@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vericlaim-ai-backup
+    runtime: docker
+    plan: free
+    region: singapore
+    repo: https://github.com/krishikesannn/vericlaim-ai
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: VERICLAIM_HOST
+        value: 0.0.0.0
+      - key: VERICLAIM_STATE_DIR
+        value: /tmp/vericlaim
