@@ -20,6 +20,17 @@
 
 > **Decision support, never automatic denial.** A risk score prioritizes a human review; it does not prove deception or determine a claim outcome.
 
+## Live deployments
+
+| Deployment | Link | Purpose | Status |
+| --- | --- | --- | --- |
+| **Vercel public application** | [Open VeriClaim AI](https://vericlaim-ai-flame.vercel.app/) | Fast public frontend connected to the production API | **Live** |
+| **Vercel Model Lab** | [Test the fraud model](https://vericlaim-ai-flame.vercel.app/#model-lab) | Upload an image and inspect the model, Evidence DNA and comparison results | **Live** |
+| **Railway full-stack service** | [Open Railway deployment](https://vericlaim-ai-production.up.railway.app/) | Python API, model inference and persistent claim state | **Live — primary backend** |
+| **Render cold standby** | [Deploy or manage the backup](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2Fkrishikesannn%2Fvericlaim-ai) | Free on-demand backend if the Railway service is unavailable | **Provisioning** |
+
+The Vercel application is the recommended judge-facing link. It sends API requests to the Railway backend, where the trained model, customer portal, staff workflow, Secure Claim Passport and persistent evidence records run. The Render Blueprint is maintained as a cold standby; its final public URL will be added here after its first deployment succeeds.
+
 ## Why VeriClaim stands out
 
 | Conventional image classifier | VeriClaim evidence-intelligence workflow |
